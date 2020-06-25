@@ -3,6 +3,7 @@
 	--markerwidth: 0;
 	outline: none;
 	display: flex;
+	flex-direction: column;
 	user-select: none;
 	-ms-user-select: none;
 	-webkit-user-select: none;
@@ -18,21 +19,26 @@
 .vipcolcontent {
 	position: absolute;
 	width: 100%;
+	height: 100%;
 }
 .vipmonthhdr {
 	text-align: center;
-	line-height: calc(var(--celloffset) * 2);
-	overflow: hidden;
+	/* line-height: calc(var(--celloffset) * 2); */
+	/* overflow: hidden; */
 	white-space: nowrap;
+	height: 20%;
 }
 .vipcoloffset {
 	--offsetday: 0;
-	margin-top: calc(var(--celloffset) * var(--offsetday));
+	margin-left: calc(50px * var(--offsetday));
 	position: relative;
+	height: 80%;
 }
 .vipcells {
 	position: absolute;
 	width: 100%;
+	height: 100%;
+	display: flex;
 }
 .vipsel {
 	position: absolute;
@@ -51,7 +57,7 @@
 	width: 100%;
 	z-index: 1;
 }
-.vipmultidayevent {
+/* .vipmultidayevent {
 	--start: 0;
 	--extent: 0;
 	--slot: 0;
@@ -60,19 +66,37 @@
 	height: calc((var(--celloffset) * var(--extent)) - 1px);
 	right: calc((var(--slot) * (var(--markerwidth) + 2px)) + 3px);
 	width: var(--markerwidth);
+} */
+
+.vipmultidayevent {
+	--start: 0;
+	--extent: 0;
+	--slot: 0;
+	position: absolute;
+	top: calc(var(--celloffset) * var(--start));
+	width: calc( 50px  * var(--extent) );
+	
+	left: calc((var(--slot) * (var(--markerwidth) + 2px)));
+	height: var(--markerwidth);
 }
 
 .vipcell {
-	height: calc(var(--celloffset) - 1px);
+	/* height: calc(var(--celloffset) - 1px); */
 	margin-left: 1px;
 	margin-bottom: 1px;
 	background-color: #eaeaea;
 	display: flex;
 	overflow: hidden;
 	pointer-events: none;
+	flex: 1 1 auto;
+	flex-basis: 0;
+	min-width: 1%;
+	height: 100%;
+	width: 50px;
+	max-width: 50px;
 }
 .vipcell.weekend {
-	background-color: #d8d8d8;
+	background-color: #EAF6FF;
 }
 .vipcellnum {
 	margin: 0.2em;
@@ -94,10 +118,11 @@
 	z-index: 2;
 	display: flex;
 	position: relative;
+    display: flex;
+    flex-direction: column;
 }
 .vipsingledayevent {
-	margin-left: 2px;
-	margin-right: 1px;
+	margin: 0px 1px 1px 2px;
 	overflow: hidden;
 	display: flex;
 	align-items: center;
